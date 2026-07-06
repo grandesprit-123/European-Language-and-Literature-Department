@@ -409,6 +409,7 @@
     }
 
     .daily-phrase-card,
+    .daily-phrase-detail-card,
     .phrase-form-card,
     .phrase-list-card {
       border: 1px solid var(--border);
@@ -420,7 +421,14 @@
     .daily-phrase-card {
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      min-height: 100%;
       padding: 2rem;
+      text-align: center;
       background:
         linear-gradient(135deg, rgba(0, 91, 172, 0.94), rgba(0, 61, 115, 0.9)),
         var(--surface);
@@ -443,7 +451,7 @@
       z-index: 1;
       width: min(100%, 280px);
       aspect-ratio: 1;
-      margin: 0 0 1.5rem auto;
+      margin: 0;
       overflow: hidden;
       border-radius: 22px;
       background: #fff;
@@ -611,12 +619,10 @@
     }
 
     .daily-phrase-date {
-      position: relative;
-      z-index: 1;
       display: inline-block;
-      margin-bottom: 1rem;
-      color: rgba(255, 255, 255, 0.74);
-      font-size: 0.78rem;
+      margin-bottom: 1.25rem;
+      color: var(--french-red);
+      font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -625,34 +631,56 @@
     .daily-phrase-text {
       position: relative;
       z-index: 1;
+      width: 100%;
       font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.18;
-      margin-bottom: 1rem;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      line-height: 1.2;
+      color: #fff;
     }
 
-    .daily-phrase-translation,
-    .daily-phrase-note,
-    .daily-phrase-student {
-      position: relative;
-      z-index: 1;
-      color: rgba(255, 255, 255, 0.82);
+    .daily-phrase-detail-card {
+      padding: 1.5rem;
+    }
+
+    .daily-phrase-detail-card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.15rem;
+    }
+
+    .daily-phrase-meta {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .daily-phrase-field {
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .daily-phrase-label {
+      color: var(--gachon-deep);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .daily-phrase-translation {
-      margin-bottom: 1rem;
-      font-size: 1.02rem;
+      font-size: 1.08rem;
       font-weight: 700;
+      line-height: 1.5;
     }
 
     .daily-phrase-note {
-      margin-bottom: 1.5rem;
-      font-size: 0.92rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
     }
 
     .daily-phrase-student {
-      font-size: 0.86rem;
+      font-size: 0.95rem;
       font-weight: 800;
+      color: var(--gachon-blue);
     }
 
     .phrase-side {
@@ -1375,6 +1403,7 @@
       }
 
       .daily-phrase-card,
+      .daily-phrase-detail-card,
       .phrase-form-card,
       .phrase-list-card {
         padding: 1.35rem;
@@ -1382,7 +1411,6 @@
 
       .phrase-illustration {
         width: min(100%, 220px);
-        margin-left: 0;
       }
 
       .grid,
@@ -1480,16 +1508,30 @@
               loading="lazy"
             >
           </div>
-          <span class="daily-phrase-date" id="daily-phrase-date">오늘의 문장</span>
           <h3 class="daily-phrase-text" id="daily-phrase-text">Que sais-je ?</h3>
-          <p class="daily-phrase-translation" id="daily-phrase-translation">나는 무엇을 아는가?</p>
-          <p class="daily-phrase-note" id="daily-phrase-note">
-            정보가 넘치는 시대일수록 자신의 믿음과 지식을 비판적으로 돌아볼 필요가 있을 것이다
-          </p>
-          <p class="daily-phrase-student" id="daily-phrase-student">작성자: 이승아</p>
         </article>
 
         <div class="phrase-side">
+          <article class="daily-phrase-detail-card" aria-live="polite">
+            <span class="daily-phrase-date" id="daily-phrase-date">오늘의 문구</span>
+            <div class="daily-phrase-meta">
+              <div class="daily-phrase-field">
+                <span class="daily-phrase-label">의미</span>
+                <p class="daily-phrase-translation" id="daily-phrase-translation">나는 무엇을 아는가?</p>
+              </div>
+              <div class="daily-phrase-field">
+                <span class="daily-phrase-label">설명</span>
+                <p class="daily-phrase-note" id="daily-phrase-note">
+                  정보가 넘치는 시대일수록 자신의 믿음과 지식을 비판적으로 돌아볼 필요가 있을 것이다
+                </p>
+              </div>
+              <div class="daily-phrase-field">
+                <span class="daily-phrase-label">작성자</span>
+                <p class="daily-phrase-student" id="daily-phrase-student">이승아</p>
+              </div>
+            </div>
+          </article>
+
           <article class="phrase-form-card">
             <h3>새 문구 등록하기</h3>
             <form class="phrase-form" id="phrase-form">
@@ -1797,11 +1839,11 @@
 
     function showDailyPhrase(phrase) {
       if (!phrase) {
-        phraseEls.date.textContent = "오늘의 문장";
+        phraseEls.date.textContent = "오늘의 문구";
         phraseEls.french.textContent = "Que sais-je ?";
         phraseEls.korean.textContent = "나는 무엇을 아는가?";
         phraseEls.note.textContent = "정보가 넘치는 시대일수록 자신의 믿음과 지식을 비판적으로 돌아볼 필요가 있을 것이다";
-        phraseEls.student.textContent = "작성자: 이승아";
+        phraseEls.student.textContent = "이승아";
         return;
       }
 
@@ -1809,7 +1851,7 @@
       phraseEls.french.textContent = phrase.french_text;
       phraseEls.korean.textContent = phrase.korean_text;
       phraseEls.note.textContent = phrase.note || "짧은 설명이 없습니다.";
-      phraseEls.student.textContent = `작성자: ${phrase.student_name}`;
+      phraseEls.student.textContent = phrase.student_name;
     }
 
     function createPhraseListItem(phrase) {
