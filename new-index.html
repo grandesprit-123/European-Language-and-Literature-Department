@@ -917,11 +917,428 @@
       font-size: 0.9rem;
     }
 
+    .schedule-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .schedule-stat {
+      padding: 1.35rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-glass);
+      box-shadow: var(--shadow);
+    }
+
+    .schedule-stat strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--gachon-blue);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      line-height: 1;
+    }
+
+    .schedule-stat span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .schedule-dashboard {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .schedule-panel {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface-glass);
+      box-shadow: var(--shadow);
+    }
+
+    .schedule-calendar-panel {
+      padding: 1.5rem;
+    }
+
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .calendar-header h3 {
+      font-size: 1.15rem;
+    }
+
+    .calendar-nav {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .calendar-nav button {
+      width: 2.2rem;
+      height: 2.2rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface-soft);
+      color: var(--text);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .calendar-nav button:hover {
+      background: rgba(0, 91, 172, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .calendar-weekdays,
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.35rem;
+    }
+
+    .calendar-weekdays {
+      margin-bottom: 0.45rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .calendar-weekdays span:first-child,
+    .calendar-day.is-sunday .calendar-day-num {
+      color: var(--french-red);
+    }
+
+    .calendar-day {
+      position: relative;
+      min-height: 4.4rem;
+      padding: 0.45rem;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      background: var(--surface-soft);
+      cursor: pointer;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .calendar-day:hover {
+      border-color: rgba(0, 91, 172, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .calendar-day.is-outside {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .calendar-day.is-outside:hover {
+      transform: none;
+      border-color: transparent;
+    }
+
+    .calendar-day.is-today {
+      border-color: var(--gachon-blue);
+      box-shadow: inset 0 0 0 1px rgba(0, 91, 172, 0.18);
+    }
+
+    .calendar-day.is-selected {
+      background: rgba(0, 91, 172, 0.12);
+      border-color: rgba(0, 91, 172, 0.42);
+    }
+
+    .calendar-day-num {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .calendar-dots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+
+    .calendar-dot {
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+    }
+
+    .calendar-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .legend-item i {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      font-style: normal;
+    }
+
+    .schedule-detail-panel {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1.25rem;
+      align-content: start;
+    }
+
+    .schedule-detail-block h3 {
+      margin-bottom: 0.85rem;
+      font-size: 1.02rem;
+    }
+
+    .schedule-detail-date {
+      margin-bottom: 0.85rem;
+      color: var(--gachon-blue);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .schedule-event-card {
+      padding: 0.95rem 1rem;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gachon-blue);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+
+    .schedule-event-card + .schedule-event-card {
+      margin-top: 0.65rem;
+    }
+
+    .schedule-event-card.is-ongoing {
+      background: rgba(0, 91, 172, 0.08);
+    }
+
+    .schedule-event-card strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 0.98rem;
+    }
+
+    .schedule-event-card p {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .schedule-event-card .event-badge {
+      display: inline-block;
+      margin-top: 0.55rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .event-badge.is-ongoing {
+      background: rgba(0, 91, 172, 0.14);
+      color: var(--gachon-blue);
+    }
+
+    .event-badge.is-upcoming {
+      background: rgba(212, 61, 61, 0.12);
+      color: var(--french-red);
+    }
+
+    .event-badge.is-past {
+      background: rgba(100, 116, 139, 0.14);
+      color: var(--muted);
+    }
+
+    .schedule-empty {
+      padding: 1rem;
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .schedule-timeline-panel {
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .timeline-filter {
+      padding: 0.42rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface-soft);
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .timeline-filter.is-active,
+    .timeline-filter:hover {
+      color: var(--gachon-blue);
+      border-color: rgba(0, 91, 172, 0.35);
+      background: rgba(0, 91, 172, 0.08);
+    }
+
+    .timeline-axis {
+      display: grid;
+      grid-template-columns: 9.5rem 1fr;
+      gap: 0.75rem;
+      margin-bottom: 0.55rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .timeline-axis-labels {
+      position: relative;
+      height: 1rem;
+    }
+
+    .timeline-axis-labels span {
+      position: absolute;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .timeline-rows {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 9.5rem 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .timeline-row-label {
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .timeline-track {
+      position: relative;
+      height: 1.35rem;
+      border-radius: 999px;
+      background: var(--surface-soft);
+      overflow: hidden;
+    }
+
+    .timeline-bar {
+      position: absolute;
+      top: 0.18rem;
+      bottom: 0.18rem;
+      border-radius: 999px;
+      min-width: 0.35rem;
+    }
+
+    .schedule-list {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .schedule-list-item {
+      display: grid;
+      grid-template-columns: 7.5rem 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface-glass);
+    }
+
+    .schedule-list-date {
+      color: var(--gachon-blue);
+      font-size: 0.82rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .schedule-list-item h4 {
+      margin-bottom: 0.2rem;
+      font-size: 0.98rem;
+    }
+
+    .schedule-list-item p {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .cat-exam { --cat-color: #d43d3d; }
+    .cat-grade { --cat-color: #7c3aed; }
+    .cat-semester { --cat-color: #005bac; }
+    .cat-vacation { --cat-color: #059669; }
+    .cat-registration { --cat-color: #ea580c; }
+    .cat-leave { --cat-color: #0891b2; }
+    .cat-return { --cat-color: #db2777; }
+    .cat-makeup { --cat-color: #64748b; }
+    .cat-other { --cat-color: #475569; }
+
+    .calendar-dot[class*="cat-"],
+    .legend-item[class*="cat-"] i,
+    .timeline-row[class*="cat-"] .timeline-bar {
+      background: var(--cat-color);
+    }
+
+    .schedule-event-card[class*="cat-"],
+    .schedule-list-item[class*="cat-"] {
+      border-left-color: var(--cat-color);
+    }
+
     @media (max-width: 920px) {
       .hero,
       .phrase-board,
       .intro-panel,
-      .career {
+      .career,
+      .schedule-dashboard,
+      .schedule-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-list-item {
         grid-template-columns: 1fr;
       }
 
@@ -976,6 +1393,19 @@
       .activity {
         grid-template-columns: 1fr;
       }
+
+      .timeline-axis,
+      .timeline-row {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-row-label {
+        margin-bottom: 0.2rem;
+      }
+
+      .calendar-day {
+        min-height: 3.6rem;
+      }
     }
   </style>
 </head>
@@ -984,6 +1414,7 @@
     <a class="logo" href="#">Gachon Français</a>
     <ul>
       <li><a href="#daily-phrases">오늘의 문구</a></li>
+      <li><a href="#schedule">학사일정</a></li>
       <li><a href="#about">소개</a></li>
       <li><a href="#study">학습</a></li>
       <li><a href="#activities">활동</a></li>
@@ -1089,6 +1520,89 @@
           </article>
         </div>
       </div>
+    </section>
+
+    <section id="schedule">
+      <p class="section-label">Calendrier académique</p>
+      <h2>2026학년도 학사일정</h2>
+      <p class="lead">
+        2026_학사일정 스프레드시트 데이터를 바탕으로 한 일정 대시보드입니다.
+        진행 중인 일정, 캘린더, 타임라인을 한눈에 확인할 수 있습니다.
+      </p>
+
+      <div class="schedule-stats">
+        <article class="schedule-stat">
+          <strong id="stat-ongoing">0</strong>
+          <span>진행 중인 일정</span>
+        </article>
+        <article class="schedule-stat">
+          <strong id="stat-upcoming">0</strong>
+          <span>다가오는 일정</span>
+        </article>
+        <article class="schedule-stat">
+          <strong id="stat-total">0</strong>
+          <span>전체 일정</span>
+        </article>
+      </div>
+
+      <div class="schedule-dashboard">
+        <article class="schedule-panel schedule-calendar-panel">
+          <div class="calendar-header">
+            <h3 id="calendar-month-label">2026년 7월</h3>
+            <div class="calendar-nav">
+              <button type="button" id="calendar-prev" aria-label="이전 달">‹</button>
+              <button type="button" id="calendar-today" aria-label="오늘">오늘</button>
+              <button type="button" id="calendar-next" aria-label="다음 달">›</button>
+            </div>
+          </div>
+          <div class="calendar-weekdays">
+            <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+          </div>
+          <div class="calendar-grid" id="calendar-grid"></div>
+          <div class="calendar-legend">
+            <span class="legend-item cat-exam"><i></i>시험</span>
+            <span class="legend-item cat-grade"><i></i>성적</span>
+            <span class="legend-item cat-semester"><i></i>계절학기</span>
+            <span class="legend-item cat-vacation"><i></i>방학</span>
+            <span class="legend-item cat-registration"><i></i>신청</span>
+            <span class="legend-item cat-leave"><i></i>휴학</span>
+            <span class="legend-item cat-return"><i></i>복학</span>
+            <span class="legend-item cat-makeup"><i></i>보강</span>
+          </div>
+        </article>
+
+        <article class="schedule-panel schedule-detail-panel">
+          <div class="schedule-detail-block">
+            <h3>선택한 날짜</h3>
+            <p class="schedule-detail-date" id="selected-date-label">2026년 7월 6일</p>
+            <div id="selected-day-events"></div>
+          </div>
+          <div class="schedule-detail-block">
+            <h3>다가오는 일정</h3>
+            <div id="upcoming-events"></div>
+          </div>
+        </article>
+      </div>
+
+      <article class="schedule-panel schedule-timeline-panel">
+        <div class="timeline-header">
+          <h3>학기 일정 타임라인</h3>
+          <div class="timeline-filters" id="timeline-filters">
+            <button class="timeline-filter is-active" type="button" data-filter="all">전체</button>
+            <button class="timeline-filter" type="button" data-filter="exam">시험</button>
+            <button class="timeline-filter" type="button" data-filter="registration">신청</button>
+            <button class="timeline-filter" type="button" data-filter="vacation">방학/휴학</button>
+            <button class="timeline-filter" type="button" data-filter="semester">학기</button>
+          </div>
+        </div>
+        <div class="timeline-axis">
+          <span></span>
+          <div class="timeline-axis-labels" id="timeline-axis-labels"></div>
+        </div>
+        <div class="timeline-rows" id="timeline-rows"></div>
+      </article>
+
+      <div class="schedule-list" id="schedule-list" aria-label="전체 학사일정 목록"></div>
     </section>
 
     <section id="about">
@@ -1393,6 +1907,410 @@
     });
 
     loadPhrases();
+
+    const SCHEDULE_DATA = [
+      { start: "2026-06-09", end: "2026-06-15", title: "기말고사" },
+      { start: "2026-06-16", end: "2026-06-22", title: "보강기간" },
+      { start: "2026-06-22", end: "2026-07-03", title: "재입학 신청기간" },
+      { start: "2026-06-23", end: "2026-07-06", title: "하계 계절학기" },
+      { start: "2026-06-23", end: "2026-08-31", title: "미등록 휴학기간" },
+      { start: "2026-06-23", end: "2026-06-23", title: "하계방학" },
+      { start: "2026-06-25", end: "2026-06-30", title: "성적공시 및 정정" },
+      { start: "2026-07-13", end: "2026-08-31", title: "휴학연기 신청기간" },
+      { start: "2026-07-13", end: "2026-07-17", title: "복학기간" },
+      { start: "2026-07-29", end: "2026-07-31", title: "예비수강 신청기간" }
+    ];
+
+    const scheduleEls = {
+      statOngoing: document.getElementById("stat-ongoing"),
+      statUpcoming: document.getElementById("stat-upcoming"),
+      statTotal: document.getElementById("stat-total"),
+      monthLabel: document.getElementById("calendar-month-label"),
+      calendarGrid: document.getElementById("calendar-grid"),
+      selectedDateLabel: document.getElementById("selected-date-label"),
+      selectedDayEvents: document.getElementById("selected-day-events"),
+      upcomingEvents: document.getElementById("upcoming-events"),
+      timelineAxis: document.getElementById("timeline-axis-labels"),
+      timelineRows: document.getElementById("timeline-rows"),
+      timelineFilters: document.getElementById("timeline-filters"),
+      scheduleList: document.getElementById("schedule-list"),
+      prevBtn: document.getElementById("calendar-prev"),
+      nextBtn: document.getElementById("calendar-next"),
+      todayBtn: document.getElementById("calendar-today")
+    };
+
+    const scheduleToday = new Date();
+    scheduleToday.setHours(0, 0, 0, 0);
+
+    let calendarYear = scheduleToday.getFullYear();
+    let calendarMonth = scheduleToday.getMonth();
+    let selectedDate = new Date(scheduleToday);
+    let activeTimelineFilter = "all";
+
+    const FILTER_GROUPS = {
+      exam: ["exam"],
+      registration: ["registration", "return"],
+      vacation: ["vacation", "leave"],
+      semester: ["semester", "makeup"]
+    };
+
+    function parseScheduleDate(value) {
+      const [year, month, day] = value.split("-").map(Number);
+      return new Date(year, month - 1, day);
+    }
+
+    function toScheduleKey(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function getEventCategory(title) {
+      if (title.includes("고사")) return "exam";
+      if (title.includes("성적")) return "grade";
+      if (title.includes("계절학기")) return "semester";
+      if (title.includes("방학")) return "vacation";
+      if (title.includes("신청")) return "registration";
+      if (title.includes("휴학")) return "leave";
+      if (title.includes("복학")) return "return";
+      if (title.includes("보강")) return "makeup";
+      return "other";
+    }
+
+    function getEventStatus(event) {
+      const start = parseScheduleDate(event.start);
+      const end = parseScheduleDate(event.end);
+      if (scheduleToday < start) return "upcoming";
+      if (scheduleToday > end) return "past";
+      return "ongoing";
+    }
+
+    function enrichScheduleEvents() {
+      return SCHEDULE_DATA.map((event) => ({
+        ...event,
+        category: getEventCategory(event.title),
+        status: getEventStatus(event)
+      })).sort((a, b) => parseScheduleDate(a.start) - parseScheduleDate(b.start));
+    }
+
+    const scheduleEvents = enrichScheduleEvents();
+
+    function buildScheduleDayMap(events) {
+      const map = new Map();
+
+      events.forEach((event) => {
+        const cursor = parseScheduleDate(event.start);
+        const end = parseScheduleDate(event.end);
+
+        while (cursor <= end) {
+          const key = toScheduleKey(cursor);
+          if (!map.has(key)) map.set(key, []);
+          map.get(key).push(event);
+          cursor.setDate(cursor.getDate() + 1);
+        }
+      });
+
+      return map;
+    }
+
+    const scheduleDayMap = buildScheduleDayMap(scheduleEvents);
+
+    function formatScheduleDay(date) {
+      return new Intl.DateTimeFormat("ko-KR", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        weekday: "long"
+      }).format(date);
+    }
+
+    function formatScheduleRange(start, end) {
+      const startDate = parseScheduleDate(start);
+      const endDate = parseScheduleDate(end);
+      const formatter = new Intl.DateTimeFormat("ko-KR", {
+        month: "long",
+        day: "numeric"
+      });
+
+      if (start === end) return formatter.format(startDate);
+      return `${formatter.format(startDate)} ~ ${formatter.format(endDate)}`;
+    }
+
+    function formatScheduleListRange(start, end) {
+      const startDate = parseScheduleDate(start);
+      const endDate = parseScheduleDate(end);
+      const formatter = new Intl.DateTimeFormat("ko-KR", {
+        month: "numeric",
+        day: "numeric"
+      });
+
+      if (start === end) return formatter.format(startDate);
+      return `${formatter.format(startDate)} - ${formatter.format(endDate)}`;
+    }
+
+    function getStatusLabel(status) {
+      if (status === "ongoing") return "진행 중";
+      if (status === "upcoming") return "예정";
+      return "종료";
+    }
+
+    function matchesTimelineFilter(event) {
+      if (activeTimelineFilter === "all") return true;
+      const groups = FILTER_GROUPS[activeTimelineFilter] || [];
+      return groups.includes(event.category);
+    }
+
+    function createScheduleEventCard(event) {
+      const card = document.createElement("article");
+      card.className = `schedule-event-card cat-${event.category} is-${event.status}`;
+
+      const title = document.createElement("strong");
+      title.textContent = event.title;
+
+      const range = document.createElement("p");
+      range.textContent = formatScheduleRange(event.start, event.end);
+
+      const badge = document.createElement("span");
+      badge.className = `event-badge is-${event.status}`;
+      badge.textContent = getStatusLabel(event.status);
+
+      card.append(title, range, badge);
+      return card;
+    }
+
+    function renderScheduleStats() {
+      scheduleEls.statTotal.textContent = String(scheduleEvents.length);
+      scheduleEls.statOngoing.textContent = String(
+        scheduleEvents.filter((event) => event.status === "ongoing").length
+      );
+      scheduleEls.statUpcoming.textContent = String(
+        scheduleEvents.filter((event) => event.status === "upcoming").length
+      );
+    }
+
+    function renderSelectedDayEvents() {
+      const key = toScheduleKey(selectedDate);
+      const events = scheduleDayMap.get(key) || [];
+
+      scheduleEls.selectedDateLabel.textContent = formatScheduleDay(selectedDate);
+      scheduleEls.selectedDayEvents.innerHTML = "";
+
+      if (!events.length) {
+        const empty = document.createElement("p");
+        empty.className = "schedule-empty";
+        empty.textContent = "선택한 날짜에 등록된 학사일정이 없습니다.";
+        scheduleEls.selectedDayEvents.append(empty);
+        return;
+      }
+
+      events.forEach((event) => {
+        scheduleEls.selectedDayEvents.append(createScheduleEventCard(event));
+      });
+    }
+
+    function renderUpcomingEvents() {
+      const upcoming = scheduleEvents
+        .filter((event) => event.status === "upcoming" || event.status === "ongoing")
+        .slice(0, 4);
+
+      scheduleEls.upcomingEvents.innerHTML = "";
+
+      if (!upcoming.length) {
+        const empty = document.createElement("p");
+        empty.className = "schedule-empty";
+        empty.textContent = "다가오는 일정이 없습니다.";
+        scheduleEls.upcomingEvents.append(empty);
+        return;
+      }
+
+      upcoming.forEach((event) => {
+        scheduleEls.upcomingEvents.append(createScheduleEventCard(event));
+      });
+    }
+
+    function renderCalendar() {
+      scheduleEls.monthLabel.textContent = new Intl.DateTimeFormat("ko-KR", {
+        year: "numeric",
+        month: "long"
+      }).format(new Date(calendarYear, calendarMonth, 1));
+
+      scheduleEls.calendarGrid.innerHTML = "";
+
+      const firstDay = new Date(calendarYear, calendarMonth, 1);
+      const startOffset = firstDay.getDay();
+      const daysInMonth = new Date(calendarYear, calendarMonth + 1, 0).getDate();
+      const totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7;
+
+      for (let index = 0; index < totalCells; index += 1) {
+        const dayNumber = index - startOffset + 1;
+        const cellDate = new Date(calendarYear, calendarMonth, dayNumber);
+        const isOutside = dayNumber < 1 || dayNumber > daysInMonth;
+        const key = toScheduleKey(cellDate);
+        const dayEvents = scheduleDayMap.get(key) || [];
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "calendar-day";
+
+        if (isOutside) button.classList.add("is-outside");
+        if (cellDate.getDay() === 0) button.classList.add("is-sunday");
+        if (toScheduleKey(cellDate) === toScheduleKey(scheduleToday)) button.classList.add("is-today");
+        if (toScheduleKey(cellDate) === toScheduleKey(selectedDate)) button.classList.add("is-selected");
+
+        const dayNum = document.createElement("span");
+        dayNum.className = "calendar-day-num";
+        dayNum.textContent = isOutside ? "" : String(dayNumber);
+
+        const dots = document.createElement("span");
+        dots.className = "calendar-dots";
+
+        dayEvents.slice(0, 4).forEach((event) => {
+          const dot = document.createElement("span");
+          dot.className = `calendar-dot cat-${event.category}`;
+          dots.append(dot);
+        });
+
+        button.append(dayNum, dots);
+
+        if (!isOutside) {
+          button.addEventListener("click", () => {
+            selectedDate = new Date(cellDate);
+            renderCalendar();
+            renderSelectedDayEvents();
+          });
+        } else {
+          button.disabled = true;
+        }
+
+        scheduleEls.calendarGrid.append(button);
+      }
+    }
+
+    function renderTimeline() {
+      const visibleEvents = scheduleEvents.filter(matchesTimelineFilter);
+      const rangeStart = parseScheduleDate("2026-06-01");
+      const rangeEnd = parseScheduleDate("2026-08-31");
+      const totalDays = (rangeEnd - rangeStart) / 86400000;
+
+      scheduleEls.timelineAxis.innerHTML = "";
+      ["6월", "7월", "8월"].forEach((label, index) => {
+        const marker = document.createElement("span");
+        marker.textContent = label;
+        marker.style.left = `${(index / 2) * 100}%`;
+        scheduleEls.timelineAxis.append(marker);
+      });
+
+      scheduleEls.timelineRows.innerHTML = "";
+
+      if (!visibleEvents.length) {
+        const empty = document.createElement("p");
+        empty.className = "schedule-empty";
+        empty.textContent = "선택한 필터에 해당하는 일정이 없습니다.";
+        scheduleEls.timelineRows.append(empty);
+        return;
+      }
+
+      visibleEvents.forEach((event) => {
+        const row = document.createElement("div");
+        row.className = `timeline-row cat-${event.category}`;
+
+        const label = document.createElement("div");
+        label.className = "timeline-row-label";
+        label.textContent = event.title;
+
+        const track = document.createElement("div");
+        track.className = "timeline-track";
+
+        const bar = document.createElement("span");
+        bar.className = "timeline-bar";
+        const startOffset = (parseScheduleDate(event.start) - rangeStart) / 86400000;
+        const endOffset = (parseScheduleDate(event.end) - rangeStart) / 86400000;
+        const left = (startOffset / totalDays) * 100;
+        const width = Math.max(((endOffset - startOffset + 1) / totalDays) * 100, 1.5);
+        bar.style.left = `${left}%`;
+        bar.style.width = `${width}%`;
+
+        track.append(bar);
+        row.append(label, track);
+        scheduleEls.timelineRows.append(row);
+      });
+    }
+
+    function renderScheduleList() {
+      scheduleEls.scheduleList.innerHTML = "";
+
+      scheduleEvents.forEach((event) => {
+        const item = document.createElement("article");
+        item.className = `schedule-list-item cat-${event.category}`;
+
+        const date = document.createElement("div");
+        date.className = "schedule-list-date";
+        date.textContent = formatScheduleListRange(event.start, event.end);
+
+        const content = document.createElement("div");
+        const title = document.createElement("h4");
+        title.textContent = event.title;
+        const range = document.createElement("p");
+        range.textContent = formatScheduleRange(event.start, event.end);
+        content.append(title, range);
+
+        const badge = document.createElement("span");
+        badge.className = `event-badge is-${event.status}`;
+        badge.textContent = getStatusLabel(event.status);
+
+        item.append(date, content, badge);
+        scheduleEls.scheduleList.append(item);
+      });
+    }
+
+    function initScheduleDashboard() {
+      renderScheduleStats();
+      renderCalendar();
+      renderSelectedDayEvents();
+      renderUpcomingEvents();
+      renderTimeline();
+      renderScheduleList();
+
+      scheduleEls.prevBtn.addEventListener("click", () => {
+        calendarMonth -= 1;
+        if (calendarMonth < 0) {
+          calendarMonth = 11;
+          calendarYear -= 1;
+        }
+        renderCalendar();
+      });
+
+      scheduleEls.nextBtn.addEventListener("click", () => {
+        calendarMonth += 1;
+        if (calendarMonth > 11) {
+          calendarMonth = 0;
+          calendarYear += 1;
+        }
+        renderCalendar();
+      });
+
+      scheduleEls.todayBtn.addEventListener("click", () => {
+        calendarYear = scheduleToday.getFullYear();
+        calendarMonth = scheduleToday.getMonth();
+        selectedDate = new Date(scheduleToday);
+        renderCalendar();
+        renderSelectedDayEvents();
+      });
+
+      scheduleEls.timelineFilters.addEventListener("click", (event) => {
+        const button = event.target.closest(".timeline-filter");
+        if (!button) return;
+
+        activeTimelineFilter = button.dataset.filter;
+        scheduleEls.timelineFilters.querySelectorAll(".timeline-filter").forEach((filterButton) => {
+          filterButton.classList.toggle("is-active", filterButton === button);
+        });
+        renderTimeline();
+      });
+    }
+
+    initScheduleDashboard();
   </script>
 </body>
 </html>
